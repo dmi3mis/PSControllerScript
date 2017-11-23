@@ -60,7 +60,7 @@ $Result = @{
   }
 }
 $ScriptResult = @{}
-$ScriptResultOnError = $ResultCode.Unknown
+$ScriptResultOnError = $Result.Unknown
 
 #endregion
 #------------------------------------------------------------------------------
@@ -74,43 +74,43 @@ try
   #----------------------------------------------------------------------------
   #region Step 1
 
-  $ScriptResultOnError= $Result.SampleStep1Failed
+  $ScriptResultOnError = $Result.SampleStep1Failed
 
 
   # <Add code for step 1>
 
-  # <Validate outcome and stop script processing w/ break as neccessary>
+  # <Validate result and stop script processing w/ break or throw as neccessary>
 
   #endregion
-  #----------------------------------------------------------------------------
+  #------------------------------------------------------------------------- #>
 
 
   #----------------------------------------------------------------------------
   #region Step 2
 
-  $ScriptResultOnError= $Result.SampleStep2Failed
+  $ScriptResultOnError = $Result.SampleStep2Failed
 
 
   # <Add code for step 2>
 
-  # <Validate outcome and stop script processing w/ break as neccessary>
+  # <Validate result and stop script processing w/ break or throw as neccessary>
 
   #endregion
-  #----------------------------------------------------------------------------
+  #------------------------------------------------------------------------- #>
 
 
   #----------------------------------------------------------------------------
   #region Step 3
 
-  $ScriptResultOnError= $Result.SampleStep3Failed
+  $ScriptResultOnError = $Result.SampleStep3Failed
 
 
   # <Add code for step 3>
 
-  # <Validate outcome and stop script processing w/ break as neccessary>
+  # <Validate result and stop script processing w/ break or throw as neccessary>
 
   #endregion
-  #----------------------------------------------------------------------------
+  #------------------------------------------------------------------------- #>
 
 
   #----------------------------------------------------------------------------
@@ -119,11 +119,17 @@ try
   $IsSuccessful = $true
 
   #endregion
-  #----------------------------------------------------------------------------
+  #------------------------------------------------------------------------- #>
 }
 catch
 {
+  #----------------------------------------------------------------------------
+  #region Code for exceptions and throw statements
+
   $_.Exception.Message | Write-Error
+
+  #endregion
+  #------------------------------------------------------------------------- #>
 }
 finally
 {
